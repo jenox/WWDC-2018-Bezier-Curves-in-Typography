@@ -10,8 +10,8 @@ This playground allows you to get a feel for how Bézier curves work and how com
 
 ---
 
-Swift Extensions are used to add operators for mathematical operations to fundamental CoreGraphics, allowing for more concise code when dealing with said types.
+Swift Extensions are used to add operators for common mathematical operations on fundamental Core Graphics types, allowing for more concise code when dealing with said types.
 
-Disassembling the Bézier path into its curves is done using Core Graphics APIs. Those are also responsible for drawing the curves and their control points to the screen. The sample paths in the playground come from two sources: the outlines of individual glyphs are retrieved using low-level Core Text APIs, while `NSXMLParser` and `NSScanner` are used to parse basic `.svg` input files.
+Disassembling the input Bézier path into its curves is done using Core Graphics APIs. Those are also responsible for drawing the curves and their control points to the screen. The sample paths in the playground come from two sources: the outlines of individual glyphs are retrieved using low-level Core Text APIs, while `NSXMLParser` and `NSScanner` are used to parse basic `.svg` input files.
 
 In addition to just seeing how multiple Bézier curves can be linked together to form more complex shapes, the user can also interact with those curves and move their control points around. App Kit is responsible for delivering the mouse events here.
