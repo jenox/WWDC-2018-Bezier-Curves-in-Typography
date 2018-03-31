@@ -7,14 +7,21 @@ extension CGPath {
     /// attribute currently has no effect.
     public static func svg(named name: String) -> CGPath? {
         guard let url = Bundle.main.url(forResource: name, withExtension: "svg") else {
+            print("Error reading SVG: file not found")
             return nil
         }
 
         guard let data = try? Data(contentsOf: url) else {
+            print("Error reading SVG: file could not be opened")
             return nil
         }
 
-        return SimpleSVGParser(data: data)?.path
+        guard let path = SimpleSVGParser(data: data)?.path else {
+            print("Error reading SVG: file could not be parsed")
+            return nil
+        }
+
+        return path
     }
 }
 

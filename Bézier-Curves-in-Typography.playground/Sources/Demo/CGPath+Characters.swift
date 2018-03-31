@@ -26,6 +26,10 @@ extension CGPath {
             }
         }
 
+        if path.isEmpty {
+            print("Error creating path from glyph.")
+        }
+
         return path
     }
 }
