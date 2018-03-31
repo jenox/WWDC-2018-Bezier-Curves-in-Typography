@@ -6,14 +6,14 @@ public class PathInspectorView: NSView {
     // MARK: - Initialization
 
     public override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        self.reloadCenteringTransformIfNeeded()
-
         self.strokeColor = NSColor.black
         self.fillColor = NSColor.stripes(width: 2, height: 2, color: .black, alpha: 0.2)
         self.fillRule = .winding
         self.highlightColor = NSColor(calibratedRed: 0.0, green: 0.5, blue: 1.0, alpha: 1.0)
+
+        super.init(frame: frame)
+
+        self.reloadCenteringTransformIfNeeded()
     }
 
     public convenience init(frame: CGRect, path: CGPath) {
@@ -47,22 +47,22 @@ public class PathInspectorView: NSView {
     }
 
     /// The color used to stroke the path.
-    public var strokeColor: NSColor = .black {
+    public var strokeColor: NSColor {
         didSet { self.setNeedsDisplay() }
     }
 
     /// The color used to fill the path.
-    public var fillColor: NSColor = .lightGray {
+    public var fillColor: NSColor {
         didSet { self.setNeedsDisplay() }
     }
 
     /// The fill rule used to fill the path.
-    public var fillRule: CGPathFillRule = .winding {
+    public var fillRule: CGPathFillRule {
         didSet { self.setNeedsDisplay() }
     }
 
     /// The color used to highlight portions of the path.
-    public var highlightColor: NSColor = .black {
+    public var highlightColor: NSColor {
         didSet { self.setNeedsDisplay() }
     }
 
@@ -334,7 +334,7 @@ public class PathInspectorView: NSView {
 
     // MARK: - Mouse Events
 
-    fileprivate enum State: Equatable {
+    fileprivate enum State {
         case idle
         case dragging(Int, CGPoint)
     }
